@@ -3,6 +3,7 @@ import * as VitestConfig from "vitest/config";
 
 export default VitestConfig.defineConfig({
   test: {
+    globals: true,
     environment: "jsdom",
   },
   resolve: {
