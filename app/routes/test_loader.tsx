@@ -5,7 +5,7 @@ export const loader = async () => {
   return json({ message: "hogehoge" });
 };
 
-export default function TextLoader() {
+export default function TestLoader() {
   const { message } = useLoaderData<typeof loader>();
 
   return (

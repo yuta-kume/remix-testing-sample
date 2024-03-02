@@ -2,7 +2,7 @@ import { describe, expect, test } from "vitest";
 import { createRemixStub } from "@remix-run/testing";
 import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import TextLoader from "~/routes/test_loader";
+import TestLoader from "~/routes/test_loader";
 import { json } from "@remix-run/node";
 
 describe("test_loader.tsxのテスト", () => {
@@ -12,7 +12,7 @@ describe("test_loader.tsxのテスト", () => {
     const RemixStub = createRemixStub([
       {
         path: "/",
-        Component: TextLoader,
+        Component: TestLoader,
         loader() {
           return json({ message: testText });
         },
