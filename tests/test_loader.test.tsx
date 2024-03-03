@@ -2,27 +2,22 @@ import { describe, expect, test } from "vitest";
 import { createRemixStub } from "@remix-run/testing";
 import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import TestLoader from "~/routes/test_loader";
-import { json } from "@remix-run/node";
+import TextLoader, { loader } from "~/routes/test_loader";
 
 describe("test_loader.tsxのテスト", () => {
-  const testText = "fugafuga";
-
-  test("初期表示テスト", async () => {
+  test("『hogehoge』が表示される", async () => {
     const RemixStub = createRemixStub([
       {
         path: "/",
-        Component: TestLoader,
-        loader() {
-          return json({ message: testText });
-        },
+        Component: TextLoader,
+        loader,
       },
     ]);
 
     render(<RemixStub />);
 
     await waitFor(async () => {
-      const element = await screen.findByText(`Text is ${testText}`);
+      const element = await screen.findByText("Text is hogehoge");
       expect(element).toBeVisible();
       expect(element).toBeInTheDocument();
     });
