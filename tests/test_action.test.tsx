@@ -56,7 +56,7 @@ describe("test_action.tsxのテスト", () => {
     });
   });
 
-  test("フォームの送信に成功するとルート画面が表示される", async () => {
+  test("フォームの送信に成功すると『actionに成功しました!』が表示される", async () => {
     const RemixStub = createRemixStub([
       {
         path: "/",
