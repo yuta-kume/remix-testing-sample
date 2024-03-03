@@ -2,14 +2,14 @@ import { describe, expect, test } from "vitest";
 import { createRemixStub } from "@remix-run/testing";
 import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import TextLoader, { loader } from "~/routes/test_loader";
+import TestLoader, { loader } from "~/routes/test_loader";
 
 describe("test_loader.tsxのテスト", () => {
   test("『hogehoge』が表示される", async () => {
     const RemixStub = createRemixStub([
       {
         path: "/",
-        Component: TextLoader,
+        Component: TestLoader,
         loader,
       },
     ]);
