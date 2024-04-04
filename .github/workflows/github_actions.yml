@@ -1,0 +1,68 @@
+name: 🚀 GitHub-Actions
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  Typecheck:
+    name: TypeScript✅
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.12.1
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: "npm"
+      - name: Install packages
+        run: npm ci
+      - name: Run TypeScript Check
+        run: npm run typecheck
+
+  ESLint:
+    name: ESLint🔍
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.12.1
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: "npm"
+      - name: Install packages
+        run: npm ci
+      - name: Run ESLint
+        run: npm run eslint
+
+  Vitest:
+    name: Vitest📗
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.12.1
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: "npm"
+      - name: Install packages
+        run: npm ci
+      - name: Run Vitest
+        run: npm run test
