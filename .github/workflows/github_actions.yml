@@ -50,7 +50,6 @@ jobs:
     name: Vitest📗
     runs-on: ubuntu-latest
     timeout-minutes: 3
-    services:
     steps:
       - name: Cancel Previous Runs
         uses: styfle/cancel-workflow-action@0.12.1
