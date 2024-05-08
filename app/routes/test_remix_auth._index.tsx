@@ -1,8 +1,7 @@
-import { ActionFunctionArgs, LoaderFunctionArgs, json } from "@remix-run/node";
+import { LoaderFunctionArgs, json } from "@remix-run/node";
 import { Form, useLoaderData } from "@remix-run/react";
 import { authenticator } from "~/services/auth.server";
 
-// TODO: loaderで認証されているかを確認。
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const isAuthenticate = await authenticator.isAuthenticated(request, {
     failureRedirect: "/test_remix_auth/failure",
@@ -33,10 +32,3 @@ export default function TestRemixAuthIndex() {
     </>
   );
 }
-
-export const action = async ({ request }: ActionFunctionArgs) => {
-  return await authenticator.authenticate("auth-test", request, {
-    successRedirect: "/test_remix_auth/success",
-    failureRedirect: "/test_remix_auth/failure",
-  });
-};
