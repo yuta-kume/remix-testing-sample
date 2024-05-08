@@ -11,10 +11,11 @@ describe("_index.tsxのテスト", () => {
     render(<RemixStub />);
 
     await waitFor(async () => {
-      const element1 = await screen.findByText("Welcome to Remix");
-      const element2 = await screen.findByText("15m Quickstart Blog Tutorial");
-      const element3 = await screen.findByText("Deep Dive Jokes App Tutorial");
-      const element4 = await screen.findByText("Remix Docs");
+      const element1 = await screen.findByText("テスト画面一覧");
+      const element2 = await screen.findByText("actionテスト");
+      const element3 = await screen.findByText("loaderテスト");
+      const element4 = await screen.findByText("outletテスト");
+      const element5 = await screen.findByText("remix-authテスト");
 
       expect(element1).toBeVisible();
       expect(element1).toBeInTheDocument();
@@ -24,6 +25,8 @@ describe("_index.tsxのテスト", () => {
       expect(element3).toBeInTheDocument();
       expect(element4).toBeVisible();
       expect(element4).toBeInTheDocument();
+      expect(element5).toBeVisible();
+      expect(element5).toBeInTheDocument();
     });
   });
 });
